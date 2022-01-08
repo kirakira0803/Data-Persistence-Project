@@ -15,6 +15,7 @@ public class MenuUIHandler : MonoBehaviour
     public TextMeshProUGUI bestScoresNameText;
     private void Start()
     {
+        NameScoresManager.Instance.LoadName();
         GameObject.Find("InputName").GetComponent<TMPro.TMP_InputField>().text = NameScoresManager.Instance.inputName;
         NameScoresManager.Instance.LoadHName();
         NameScoresManager.Instance.LoadScores();
@@ -22,6 +23,7 @@ public class MenuUIHandler : MonoBehaviour
     }
     public void StartNew()
     {
+        NameScoresManager.Instance.SaveName();
         SceneManager.LoadScene(1);
     }
     public void Quit()

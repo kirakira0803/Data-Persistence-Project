@@ -12,6 +12,7 @@ public class MainManager : MonoBehaviour
 
     public Text ScoreText;
     public Text highScoreTest;
+    public Text tips;
     public GameObject GameOverText;
     
     private bool m_Started = false;
@@ -23,6 +24,7 @@ public class MainManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        tips.gameObject.SetActive(true);
         NameScoresManager.Instance.LoadHName();
         NameScoresManager.Instance.LoadScores();
         highScoreTest.text = "Best Score :" + NameScoresManager.Instance.highestinputName + ":" + NameScoresManager.Instance.scores;
@@ -48,6 +50,10 @@ public class MainManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                if (tips.gameObject.activeInHierarchy == true)
+                {
+                    tips.gameObject.SetActive(false);
+                }
                 m_Started = true;
                 float randomDirection = Random.Range(-1.0f, 1.0f);
                 Vector3 forceDir = new Vector3(randomDirection, 1, 0);
